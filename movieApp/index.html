@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Movie app">
+    <meta name="desciption" content="top 250 imdb moivies with search rating and genre filter">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Movie App</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="heading-1">MovieApp</h1>
+        <div class="options">
+        <div class="search-container">
+            <input class="input" placeholder="movie | director | actor">
+        </div>
+        <div>
+            <select class="rating-select" id="rating-select">
+            <option value="">Rating</option>
+            <option value="7">7 and above</option>
+            <option value="8">8 and above</option>
+            <option value="9">9 and above</option>
+            <option value="10">10</option>
+        </select>
+        
+        <select class="rating-select" id="genre-select">
+                       <option value="drama">genre</option>
+        </select>
+        
+        </div>
+    </div>
+
+    </header>
+
+
+    <main class="main">
+    </main>
+    <script  type="module" src="./index.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</body>
+</html>
