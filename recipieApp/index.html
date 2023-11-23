@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Movie app">
+    <meta name="desciption" content="top 250 imdb moivies with search rating and genre filter">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <header class="header d-flex grow-shrink-basis align-center fixed top-0 left-0" style="z-index:1">
+        <div class="heading-1"><a href="./">RecipieApp</a></div>
+        <div class="search-container ">
+            <input class="input" placeholder="search a recipie">
+            <span class="material-icons-outlined search-icon">
+                search
+                </span>
+        </div>
+    </header>
+
+    <div class="main-container d-flex">
+        
+            <aside class="cusine-filter d-flex direction-column "></aside>
+            <main class="main d-flex  wrap"></main>
+    
+    </div>
+    
+    <script  type="module" src="./index.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</body>
+</html>

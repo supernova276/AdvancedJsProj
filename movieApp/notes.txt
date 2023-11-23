@@ -1,0 +1,3 @@
+some additons:
+card can take us to trailer or a different page with trailer  or open the trailer in a modal 
+//auto complete
