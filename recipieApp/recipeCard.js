@@ -11,6 +11,7 @@ imageContainer.classList.add("card-image")
 let img=createElement("img");
 imageContainer.appendChild(img);
 img.setAttribute("src", recipe["image-url"])
+img.setAttribute("data-id",recipe.ID)
 //description conatiner
 let desContainer=createElement("div")
 card.appendChild(desContainer)
