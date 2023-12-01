@@ -13,7 +13,7 @@ const getMovies= async (url)=>{
  try{
  const {data}= await axios.get(url) //here we have destructured teh obje returned as a response and we are displaying
  //only the data key so we get only the data
-//  console.log(data)
+ console.log(data)
 return data //this will return a promise
  }catch(err){
 //  console.log(err)
@@ -47,7 +47,7 @@ const createElement=(element)=>document.createElement(element)
 
 const createMovieCard=(movies)=>{
 
-for(let movie of movies){
+for( let movie of movies){
 
     //cardcontainer
 let card=createElement("div");

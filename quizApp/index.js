@@ -36,6 +36,7 @@ function createQuesAndOptions(quizzes,currQuesIndex){
     //the above statement will return  0 as the size of quizzes  array because quizzes stores a resoponse
     //which takes time and is an async operatoin but getquizzes func is a part of the gec so it continues to 
     //execute and returns 0 as the default value of quizzes so we use a set time out to execute getquizzes
+    const quizBox=document.createElement("div")
     const quesElement=document.createElement("p");
     quesElement.innerText=quizzes[currQuesIndex].question;
     quesContainer.appendChild(quesElement)
@@ -55,6 +56,7 @@ function createQuesAndOptions(quizzes,currQuesIndex){
     //  radioButton.setAttribute("name",currQuesIndex)
      labelElement.appendChild(radioButton)
      let OptionName=document.createElement("span")
+     OptionName.classList.add("option-space")
      OptionName.setAttribute("data-type",option)
      OptionName.innerText=option
      radioButton.setAttribute("data-type",option)

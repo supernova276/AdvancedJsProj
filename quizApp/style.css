@@ -6,6 +6,50 @@
     padding:0;
     margin:0;
 }
-input{
+.quiz{
+    display:flex;
+    width:100vw;
+    height:100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.quiz-box{
+    height:30rem;
+    width:40rem;
+    background-color:blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heading-cont{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width:100%;
+    padding-top:3rem;
+    padding-bottom: 2rem;
+    
+}
+.quesAlingment{
+    padding-top: 1rem;
+    display: flex;
+    width:100%;
+    justify-content: space-around;
+}
+.question-container{
+    padding-bottom: 1.5rem;
+}
+.option-space{
     padding:1rem;
+}
+.cta-button{
+    display: flex;
+    padding-top: 1rem;
+    width:100%;
+    justify-content:center;
+}
+button{
+    margin: 0.5rem;
+    width:3rem;
 }
