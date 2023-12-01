@@ -5,6 +5,11 @@
  const OptionConatiner=document.querySelector(".option-container")
  const nextButton=document.querySelector(".next")
  const quizContainer=document.querySelector(".quiz")
+ const quitContainer=document.querySelector(".quit")
+ const scoreContainer=document.querySelector(".quiz-box")
+ const buttonContainer=document.querySelector(".cta-button")
+ let quizBox;
+
  let score=0;
  
  const getData= async (url)=>{
@@ -36,11 +41,41 @@ function createQuesAndOptions(quizzes,currQuesIndex){
     //the above statement will return  0 as the size of quizzes  array because quizzes stores a resoponse
     //which takes time and is an async operatoin but getquizzes func is a part of the gec so it continues to 
     //execute and returns 0 as the default value of quizzes so we use a set time out to execute getquizzes
-    const quizBox=document.createElement("div")
-    const quesElement=document.createElement("p");
-    quesElement.innerText=quizzes[currQuesIndex].question;
-    quesContainer.appendChild(quesElement)
 
+     quizBox=document.createElement("div")
+    quizBox.classList.add('quiz-box')
+    quizContainer.appendChild(quizBox)
+
+    const headingContainer=document.createElement('div')
+    quizContainer.appendChild(headingContainer)
+    headingContainer.classList.add("heading-cont")
+
+    quizBox.appendChild(headingContainer)
+
+    const title=document.createElement("p")
+    title.innerText=`GeneralKnowledge`
+
+    headingContainer.appendChild(title)
+    const quesSpan=document.createElement("p")
+    headingContainer.appendChild(quesSpan)
+    quesSpan.classList.add("quesAlingment")
+
+    const quesno=document.createElement('span')
+    quesno.classList.add('quesNo')
+    quesno.innerText=`ques ${currQuesIndex}`;
+
+    quesSpan.appendChild(quesno)
+
+    const scoreCont=document.createElement('span')
+    scoreCont.classList.add('score')
+    scoreCont.innerText=score;
+
+    quesSpan.appendChild(scoreCont)
+
+    // const quesElement=document.createElement("div");
+    quesContainer.classList.add('question-container')
+    quesContainer.innerText=` ${quizzes[currQuesIndex].question}`;
+    quizBox.appendChild(quesContainer)
 
     ///options
    let options=[quizzes[currQuesIndex].correct_answer,...quizzes[currQuesIndex].incorrect_answers.
@@ -61,8 +96,24 @@ function createQuesAndOptions(quizzes,currQuesIndex){
      OptionName.innerText=option
      radioButton.setAttribute("data-type",option)
      labelElement.appendChild(OptionName)
+     quizBox.appendChild(OptionConatiner)
      //input and label i have to create if input is inside label it means it is for that label
     }
+
+    // let buttonContainer=document.createElement("div");
+    // quizBox.appendChild(buttonContainer)
+    // buttonContainer.classList.add('cta-button')
+
+    // let quitButton=document.createElement("button");
+    // quitButton.classList.add('quit')
+    // buttonContainer.appendChild(quitButton)
+    // quitButton.innerHTML="quit"
+
+    // let nextButton=document.createElement("button");
+    // nextButton.classList.add('next')
+    // buttonContainer.appendChild(nextButton)
+    // nextButton.innerHTML="next"
+    quizBox.appendChild(buttonContainer)
 
     //wether the option is correct or not should be checked after clicking on the submit button
     OptionConatiner.addEventListener('click',(e)=>{
@@ -78,17 +129,41 @@ function createQuesAndOptions(quizzes,currQuesIndex){
 
  setTimeout(()=>createQuesAndOptions(quizzes,currQuesIndex),2000)
 
- nextButton.addEventListener("click",()=>{
+ function debounce(callback,delay){
+
+    let timerId;
+
+    return function (...args){
+
+        clearTimeout(timerId);
+
+     timerId=   setTimeout(() => {
+        callback(...args);
+    }, delay);
+}
+ }
+ function handleQuit(){
+    quizBox.innerHTML=`your score is ${score}`;
+ }
+
+ function handleNext(e){
+    //  console.log(e.target)
     currQuesIndex++;
-    quesContainer.innerHTML="";
+    quizContainer.innerHTML="";
     OptionConatiner.innerHTML="";
 
     if(currQuesIndex===10){
-        quizContainer.innerHTML="";
-       let scoreContainer= document.createElement("span");
-       scoreContainer.innerText=score
-       quizContainer.appendChild(scoreContainer)
+        console.log("kya hogya ab")
+        console.log(quizBox)
+       quizContainer.innerHTML=`your score is ${score}`  
     }
     else
     createQuesAndOptions(quizzes,currQuesIndex)
- })
+ }
+
+ let debouncedQuit=debounce(handleQuit,500)
+ quitContainer.addEventListener('click',debouncedQuit)
+
+
+ let debouncedNext=debounce(handleNext,500)
+ nextButton.addEventListener("click",debouncedNext)
